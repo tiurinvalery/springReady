@@ -66,6 +66,7 @@
     <link href="${ContextPath}/resources/css/editor.dataTables.css">
 
 
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
@@ -73,6 +74,7 @@
     <script src ="${ContextPath}/resources/js/dataTables.editor.js"></script>
 
     <link href="${ContextPath}/resources/css/myPopUpWindow.css" type="text/css">
+
 
 
 </head>
@@ -463,6 +465,7 @@
                                 <th>Good's name</th>
                                 <th>Good's in order</th>
                                 <th>Good's price</th>
+                                <th>Id</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -471,6 +474,7 @@
                                 <th>Good's name</th>
                                 <th>Good's in order</th>
                                 <th>Good's price</th>
+                                <th>Id</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -567,7 +571,9 @@
             }, {
                 label: "Good's price",
                 name: "price"
-            }
+            },
+                {label: "Id",
+                name: "partOrderId"}
             ]
     } );
 
@@ -578,7 +584,7 @@
             } );
         } );
 
-        $('#goods').DataTable( {
+       var table = $('#goods').DataTable( {
             dom: "Bfrtip",
             ajax: url,
             columns: [ {
@@ -588,7 +594,8 @@
                 orderable: true},
                 {"data":"name"},
                 {"data":"number"},
-                {"data":"price"}
+                {"data":"price"},
+                {"data":"partOrderId"}
             ],
             order: [],
             select: {
@@ -598,7 +605,30 @@
             buttons: [
                 { extend: "create", editor: editor},
                 { extend: "edit",   editor: editor },
-                { extend: "remove", editor: editor },
+                {
+                    text: "Delete",
+                    extends:'selectedSingle',
+                    type: "DELETE",
+                    action: function (e, dt, button, config) {
+                        var selectedRows = table.rows('.selected').data().toArray();
+                        selectedRows.forEach(deleteOrder);
+
+                        function deleteOrder(row,index) {
+
+                            var partId = row.partOrderId;
+                            var url = "/api/order/"+"${orderId}" + "/partOrder/"+partId;
+
+                            $.ajax({
+                                url: url,
+                                type: "DELETE",
+                                data: null,
+                                success: alert("zbs")
+
+                            });
+                        }
+                    }
+                }
+
             ]
         } );
     });

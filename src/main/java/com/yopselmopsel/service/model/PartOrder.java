@@ -12,12 +12,12 @@ public class PartOrder extends BaseEntity {
     @Column(name = "total_price")
     private Long totalPrice;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "good_id")
     private Good good;
 

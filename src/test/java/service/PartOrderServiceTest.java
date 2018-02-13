@@ -205,12 +205,12 @@ public class PartOrderServiceTest extends Assert {
     public void checkDeletePartOrder() throws Exception {
             Good good = new Good();
             good.setPrice(18L);
-            good.setOrderSet(null);
-            good.setName("PartOrderGoods_Del");
+            Set<PartOrder> goodInfo = new HashSet<>();
+            good.setName("PartOr");
             good.setNumber(2769);
 
             Client client = new Client();
-            client.setName("PartOrdersClient_Del");
+            client.setName("PartOrder");
 
             Order order = new Order();
             order.setClient(client);
@@ -227,20 +227,26 @@ public class PartOrderServiceTest extends Assert {
             partOrderSet.add(partOrder);
             order.setOrders(partOrderSet);
             order.setPrice(orderService.getResultPrice(partOrderSet));
-
-
+            goodInfo.add(partOrder);
+            good.setOrderSet(goodInfo);
 
             goodService.createGood(good);
             clientService.createClient(client);
             orderService.createOrder(order);
             partOrderService.createPartOrder(partOrder);
 
-
+            order.getOrders().remove(partOrder);
+            System.out.println("IT'S START");
+            orderService.updateOrder(order);
+            System.out.println("FINISHED UPDATE ORDER");
             partOrderService.deletePartOrder(partOrder);
+            System.out.println("FINISHED DELETING PARTORDER");
+
 
             PartOrder test = partOrderService.findPartOrderByNumberAndGoodAndOrder(partOrder.getNumber(),partOrder.getGood(),partOrder.getOrder());
-            assertTrue((!test.getGood().equals(partOrder.getGood())) && (!test.getOrder().equals(partOrder.getGood()))&&(test.getNumber()!=partOrder.getNumber()));
+            assertTrue(test==null);
         }
+
 
         @Test
     public void checkPartOrdersDelete() throws Exception {

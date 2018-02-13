@@ -5,6 +5,8 @@ import com.yopselmopsel.service.service.ClientService;
 import com.yopselmopsel.service.service.GoodService;
 import com.yopselmopsel.service.service.OrderService;
 import com.yopselmopsel.service.service.PartOrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
+    private static final Logger logger = LoggerFactory.getLogger(RestController.class);
     @Autowired
     ClientService clientService;
     @Autowired
@@ -69,7 +72,7 @@ public class RestController {
     }
 
     @GetMapping(value = "/api/good/{id}/products/")
-    public GoodsResponse getAllGoodsInOrder(@PathVariable Long id) {return new GoodsResponse(goodService.findAllGoodsInOrder(id));}
+    public GoodsResponse getAllGoodsInOrder(@PathVariable Long id) {return new GoodsResponse(goodService.findAllGoodsInOrder(id),id);}
 
     @PostMapping(value = "/api/good/{id}/products/")
     public void addNewPartOrder(@PathVariable Long id, String newGoodsName, int newGoodsNumber){
@@ -89,11 +92,23 @@ public class RestController {
         orderService.updateOrder(order);
         partOrderService.createPartOrder(partOrder);
         }
-    @RequestMapping( value="/api/order/delete/{id}",method = RequestMethod.DELETE)
-    @ResponseBody
-    public void deleteOrder(@PathVariable Long id) {
-        orderService.deleteOrder(orderService.findOrderById(id));
-        }
+
+       @RequestMapping(value = "/api/order/{orderId}/partOrder/{partId}",method = RequestMethod.DELETE)
+       public void deletePartOrder(@PathVariable Long orderId,@PathVariable Long partId){
+        Order order = orderService.findOrderById(orderId);
+        logger.info("Find order");
+        PartOrder partOrder = partOrderService.findPartOrderById(partId);
+        logger.info("Find PartOrder");
+        order.getOrders().remove(partOrder);
+        logger.info("Remove part order from Set");
+        orderService.updateOrder(order);
+        logger.info("Update Order");
+        partOrderService.deletePartOrder(partOrder);
+        logger.info("Delete part order");
+        logger.info("OK");
+       }
+
+
 
     @RequestMapping(value = "/api/createorders", method = RequestMethod.GET)
     public void createFakeOrders() {
@@ -235,25 +250,27 @@ public class RestController {
             String name;
             int number;
             Long price;
+            Long partOrderId;
 
 
 
-            ResponsePart(Long id,String name,int number,Long price) {
+            ResponsePart(Long id,String name,int number,Long price, Long partOrderId) {
                 this.DT_RowId =id;
                 this.name = name;
                 this.number = number;
                 this.price = price;
+                this.partOrderId = partOrderId;
                 }
 
 
 
         }
         List<ResponsePart> data;
-        public GoodsResponse(List<Good> goodList) {
+        public GoodsResponse(List<Good> goodList, Long orderId) {
             this.data = new ArrayList<>();
             Long counter = 1L;
             for(Good good: goodList) {
-                data.add(new ResponsePart(counter,good.getName(),good.getNumber(),good.getPrice()));
+                data.add(new ResponsePart(counter,good.getName(),good.getNumber(),good.getPrice(),partOrderService.findPartOrderByNumberAndGoodAndOrder(good.getNumber(),good,orderService.findOrderById(orderId)).getId()));
                 counter=counter+1L;
             }
 
