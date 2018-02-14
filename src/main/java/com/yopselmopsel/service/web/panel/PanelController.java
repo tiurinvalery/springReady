@@ -64,7 +64,7 @@ public class PanelController {
 
     @RequestMapping(value = "/panel/order", method = RequestMethod.GET)
     public String orderPage(Model model) {
-        return "neworder";
+        return "neworder1";
     }
 
     @RequestMapping(value = "/panel/good", method = RequestMethod.GET)

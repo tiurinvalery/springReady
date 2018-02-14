@@ -1,0 +1,15 @@
+td.details-control {
+    background: url('plus.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+
+}
+
+.mybtn {
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    background: #66afe9;
+    color: #777777;
+}

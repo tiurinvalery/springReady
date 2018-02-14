@@ -9,11 +9,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Order details</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+    <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery -->
- <!--   <script src="/resources/html_data/vendor/jquery/jquery.min.js"></script>-->
+    <!--<script src="/resources/html_data/vendor/jquery/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js"></script>
 
+    <link href="/resources/css/myBackButton.css" type="text/css">
     <!-- Bootstrap Core CSS -->
     <link href="/resources/html_data/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,7 +34,8 @@
     <!-- Custom CSS -->
     <link href="/resources/html_data/dist/css/sb-admin-2.css" rel="stylesheet">
 
-
+    <%--Legacy CSS--%>
+    <link href="/resources/html_data/legacy/css/default.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="/resources/html_data/vendor/morrisjs/morris.css" rel="stylesheet">
@@ -50,7 +62,7 @@
     <link href="/resources/html_data/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <link href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
-    <!--<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>-->
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,22 +71,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css" rel="stylesheet">
-    <link href="${ContextPath}/resources/css/editor.dataTables.css">
-
-
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
-    <script src ="${ContextPath}/resources/js/dataTables.editor.js"></script>
-
-    <link href="${ContextPath}/resources/css/myPopUpWindow.css" type="text/css">
-
+    <%--Legacy JS--%>
+    <script src="/resources/html_data/legacy/js/default.js"></script>
 
 
 </head>
@@ -321,7 +319,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/welcome"><i class="fa fa-dashboard fa-fw"></i> Main Page</a>
+                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -417,7 +415,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Order details</h1>
+                <h1 class="page-header">Tables</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -426,67 +424,95 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="link_group">
-                            <a class="show_popup" rel="reg_form" href="#">Change good's in order</a>
-                        </div>
-                        <div class="popup reg_form">
-                            <a class="close" href="#">Close</a>
-                            <form method="post" action= "/api/good/${orderId}/products/">
-                                <label for="newGoodsName">Input good's name</label>
-                                <input type="text" name="newGoodsName" />
-                                <label for="newGoodsNumber">Input good's number</label>
-                                <input type="number" name="newGoodsNumber" />
-                                <input type="submit" value="In" id="newGoodsCreate"/>
-                            </form>
-                        </div>
+                        DataTables Advanced Tables
                     </div>
-                    <script>
-                        function addNewGoodToOrder() {
-                            var url = "/api/good/"+"${orderId}"+"/products/";
-                            var newGoodsName = newGoodsName.data;
-                            var newGoodsNumber = newGoodsNumber.data;
-                            $.ajax({
-                                url:url,
-                                type: "POST",
-                                data: [
-                                    {data: newGoodsName},
-                                    {data: newGoodsNumber}
-                                ],
-                                success: alert("zbs vse")
-                            });
-                        }
-                    </script>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="display" id="goods">
+                        <table id="example" class="table table-striped table-bordered table-hover display nowrap" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Good's name</th>
-                                <th>Good's in order</th>
-                                <th>Good's price</th>
-                                <th>Id</th>
+                                <th>Order id</th>
+                                <th>Total price</th>
+                                <th>Total number</th>
+                                <th>Client name</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th></th>
-                                <th>Good's name</th>
-                                <th>Good's in order</th>
-                                <th>Good's price</th>
-                                <th>Id</th>
+                                <th>Order id</th>
+                                <th>Total price</th>
+                                <th>Total number</th>
+                                <th>Client name</th>
                             </tr>
                             </tfoot>
                         </table>
+                        <script>
+                            function format ( d ) {
+                                return 'Hello' }
+
+                            $(document).ready(function() {
+                                var dt = $('#example').DataTable( {
+                                    "processing": true,
+                                    "serverSide": true,
+                                    "ajax": "/api/orders",
+                                    "columns": [
+                                        {
+                                            "class":          "details-control",
+                                            "orderable":      false,
+                                            "data":           null,
+                                            "defaultContent": '<button type="button" class="btn btn-info btn-sm mybtn" data-toggle="modal" data-target="#myModal">+</button>'
+                                        },
+                                        { "data": "id" },
+                                        { "data": "price" },
+                                        { "data": "totalNumber" },
+                                        { "data": "clientName" }
+
+                                    ],
+                                    "order": [[1, 'asc']]
+                                } );
+
+                                // Array to track the ids of the details displayed rows
+                                var detailRows = [];
+
+                                $('#example tbody').on( 'click', 'tr td.details-control', function () {
+                                    var tr = $(this).closest('tr');
+                                    var row = dt.row( tr );
+                                    var idx = $.inArray( tr.attr('id'), detailRows );
+
+                                    if ( row.child.isShown() ) {
+                                        tr.removeClass( 'details' );
+                                        row.child.hide();
+
+                                        // Remove from the 'open' array
+                                        detailRows.splice( idx, 1 );
+                                    }
+                                    else {
+                                        tr.addClass( 'details' );
+                                        row.child( format( row.data() ) ).show();
+
+                                        // Add to the 'open' array
+                                        if ( idx === -1 ) {
+                                            detailRows.push( tr.attr('id') );
+                                        }
+                                    }
+                                } );
+
+                                // On each draw, loop over the `detailRows` array and show any child rows
+                                dt.on( 'draw', function () {
+                                    $.each( detailRows, function ( i, id ) {
+                                        $('#'+id+' td.details-control').trigger( 'click' );
+                                    } );
+                                } );
+                            } );
+                        </script>
                         <!-- /.table-responsive -->
                         <div class="well">
-                            <h4>Global Information about this order</h4>
-                            <p>Client name: <b>${clientName}</b>. This client bought products with summary price <b>${totalPrice}</b>.</p><br>
-                            <a class="btn btn-default btn-lg btn-block" target="_blank" href="/panel/client/details/${clientName}">Show detail client information</a>
-                            <p>Put a sale for this order on <input class="text-primary" placeholder="input percent from 1 to 100" type="text">  or <input class="text-primary" placeholder="input grivnas from 1 to ${totalPrice}" type="text"> for client ${clientName} <button class="btn btn-primary-outline" style="color:black;margin-top:5px; background-color: white">Save</button> </p>
-
+                            <h4>DataTables Usage Information</h4>
+                            <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
+                            <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
                         </div>
-
                     </div>
                     <!-- /.panel-body -->
                 </div>
@@ -500,7 +526,6 @@
 </div>
 
 <!-- /#page-wrapper -->
-
 <div class="panel-footer">
     <div class="text-center">
         <a class="btn btn-social-icon btn-bitbucket"><i class="fa fa-bitbucket"></i></a>
@@ -519,122 +544,107 @@
 </div>
 
 
-<script>
-    $(function () {
-        //script for popups
-        $('a.show_popup').click(function () {
-            $('div.'+$(this).attr("rel")).fadeIn(500);
-            $("body").append("<div id='overlay'></div>");
-            $('#overlay').show().css({'filter' : 'alpha(opacity=80)'});
-            return false;
-        });
-        $('a.close').click(function () {
-            $(this).parent().fadeOut(100);
-            $('#overlay').remove('#overlay');
-            return false;
-        });
+<!-- jQuery -->
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
 
-        //script for tabs
-        $("div.selectTabs").each(function () {
-            var tmp = $(this);
-            $(tmp).find(".lineTabs li").each(function (i) {
-                $(tmp).find(".lineTabs li:eq("+i+") a").click(function(){
-                    var tab_id=i+1;
-                    $(tmp).find(".lineTabs li").removeClass("active");
-                    $(this).parent().addClass("active");
-                    $(tmp).find(".tab_content div").stop(false,false).hide();
-                    $(tmp).find(".tab"+tab_id).stop(false,false).fadeIn(300);
-                    return false;
-                });
-            });
-        });
-    });
-</script>
 
+<!-- Bootstrap Core JavaScript -->
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/metisMenu/metisMenu.min.js"></script>
+<!-- DataTables JavaScript -->
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+
+<!-- Morris Charts JavaScript -->
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.min.js"></script>
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.min.js"></script>
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/data/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script type="text/javascript">
-    var url = "/api/good/"+"${orderId}"+"/products/";
-    var editor; // use a global for the submit and return data rendering in the examples
-
     $(document).ready(function() {
-        editor = new $.fn.dataTable.Editor( {
-            ajax: url,
-            table: "#goods",
-
-            fields: [ {
-                label: "Good's name",
-                name: "name"
-            }, {
-                label: "Good's in order",
-                name: "number"
-            }, {
-                label: "Good's price",
-                name: "price"
-            },
-                {label: "Id",
-                name: "partOrderId"}
-            ]
-    } );
-
-        // Activate an inline edit on click of a table cell
-        $('#goods').on( 'click', 'tbody td:not(:first-child)', function (e) {
-            editor.inline( this, {
-                buttons: { label: '&gt;', fn: function () { this.submit(); } }
-            } );
-        } );
-
-       var table = $('#goods').DataTable( {
-            dom: "Bfrtip",
-            ajax: url,
-            columns: [ {
-                data: null,
-                defaultContent: '',
-                className: 'select-checkbox',
-                orderable: true},
-                {"data":"name"},
-                {"data":"number"},
-                {"data":"price"},
-                {"data":"partOrderId"}
-            ],
-            order: [],
-            select: {
-                style:    'os',
-                selector: 'td:first-child'
-            },
-            buttons: [
-                { extend: "create", editor: editor},
-                { extend: "edit",   editor: editor },
-                {
-                    text: "Delete",
-                    extends:'selectedSingle',
-                    type: "DELETE",
-                    action: function (e, dt, button, config) {
-                        var selectedRows = table.rows('.selected').data().toArray();
-                        selectedRows.forEach(deleteOrder);
-
-                        function deleteOrder(row,index) {
-
-                            var partId = row.partOrderId;
-                            var url = "/api/order/"+"${orderId}" + "/partOrder/"+partId;
-
-                            $.ajax({
-                                url: url,
-                                type: "DELETE",
-                                data: null
-
-                            });
+        var selected = [];
+        var table = $('#dataTables-example').DataTable( {
+            dom:"Bfrtip",
+            processing: true,
+            responsive: {
+                details: {
+                    display:  $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                            var data = row.data();
+                            return 'Details for order: ' + data[0];
                         }
-                    }
-                }
+                }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+            }},
+            "ajax": "/api/orders",
+            "columns": [
+                { "data": "id" },
+                { "data": "price" },
+                { "data": "totalNumber" },
+                { "data": "clientName" }
+            ],
 
-            ]
-        } );
+
+        });
+
     });
 </script>
 
 
 
+<!-- Bootstrap Core JavaScript -->
+<script src="/resources/html_data/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/resources/html_data/vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="/resources/html_data/vendor/raphael/raphael.min.js"></script>
+<script src="/resources/html_data/vendor/morrisjs/morris.min.js"></script>
+<script src="/resources/html_data/data/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/resources/html_data/dist/js/sb-admin-2.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="/resources/html_data/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="/resources/html_data/vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js" ></script>
+
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/autofill/2.2.2/js/dataTables.autoFill.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/keytable/2.3.2/js/dataTables.keyTable.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/resources/html_data/dist/js/sb-admin-2.js"></script>
 </body>
 
 </html>
