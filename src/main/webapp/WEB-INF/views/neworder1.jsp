@@ -14,6 +14,7 @@
     <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
     <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="${ContextPath}/resources/css/savebtn.css" type="text/css">
 
     <!-- jQuery -->
     <!--<script src="/resources/html_data/vendor/jquery/jquery.min.js"></script>-->
@@ -34,8 +35,6 @@
     <!-- Custom CSS -->
     <link href="/resources/html_data/dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <%--Legacy CSS--%>
-    <link href="/resources/html_data/legacy/css/default.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="/resources/html_data/vendor/morrisjs/morris.css" rel="stylesheet">
@@ -70,9 +69,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <%--Legacy JS--%>
-    <script src="/resources/html_data/legacy/js/default.js"></script>
 
 
 </head>
@@ -448,65 +444,66 @@
                             </tr>
                             </tfoot>
                         </table>
-                        <script>
-                            function format ( d ) {
-                                return 'Hello' }
 
-                            $(document).ready(function() {
-                                var dt = $('#example').DataTable( {
-                                    "processing": true,
-                                    "serverSide": true,
-                                    "ajax": "/api/orders",
-                                    "columns": [
-                                        {
-                                            "class":          "details-control",
-                                            "orderable":      false,
-                                            "data":           null,
-                                            "defaultContent": '<button type="button" class="btn btn-info btn-sm mybtn" data-toggle="modal" data-target="#myModal">+</button>'
-                                        },
-                                        { "data": "id" },
-                                        { "data": "price" },
-                                        { "data": "totalNumber" },
-                                        { "data": "clientName" }
+                        <!-- Modal -->
+                        <%--Using:--%>
+                        <%--$("#simpleErrorModal_header").text("Error!");--%>
+                        <%--$("#simpleErrorModal_body").text("Error! Cannot save data!");--%>
+                        <%--$("#simpleErrorModal").modal('toggle');--%>
+                        <div class="modal fade" id="simpleErrorModal" role="dialog">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 id="simpleErrorModal_header" class="modal-title">Modal Header</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p id="simpleErrorModal_body" >Order details for: <input class="info input" type="text" id="orderIdContainer" readonly> </p>
+                                    </div>
+                                    <div class="content">
+                                        <p>Change total price: <input  type="number" class="form-control" id="total_price"></p>
+                                        <p>Change total number: <input type="number" class="form-control" id="total_number"></p>
+                                        <p>Change client name: <input type="text" class="form-control" id="client_name"></p>
+                                        <button class="btn-info" id="orderDetails">Open order details</button>
+                                        <button class="btn-info" id="clientDetails">Open client details</button>
+                                    </div>
+                                    <div class="footer">
+                                        <button type="button" class="btn btn-outline btn-info" id="ChangeDTSaveBtn">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                    ],
-                                    "order": [[1, 'asc']]
-                                } );
+                    <script>
+                        $('#orderDetails').click(function(){
+                            var orderId= document.getElementById('orderIdContainer').value;
+                            var url = "/panel/order/details/" + orderId + "/";
+                            $("<a>").attr("href", url).attr("target", "_blank")[0].click();
+                        })
+                    </script>
 
-                                // Array to track the ids of the details displayed rows
-                                var detailRows = [];
+                    <script>
+                        $('#ChangeDTSaveBtn').click(function(){
+                            var totalPrice = document.getElementById('total_price').value;
+                            var orderId= document.getElementById('orderIdContainer').value;
+                            var clientName = document.getElementById('client_name').value;
+                            $.ajax ({
+                                type: "POST",
+                                contentType:'application/json',
+                                url: "/api/order/",
+                                data:[
+                                    {data:orderId},
+                                    {data:clientName},
+                                    {data:totalPrice}
+                                ]
+                            })
+                        })
+                    </script>
 
-                                $('#example tbody').on( 'click', 'tr td.details-control', function () {
-                                    var tr = $(this).closest('tr');
-                                    var row = dt.row( tr );
-                                    var idx = $.inArray( tr.attr('id'), detailRows );
 
-                                    if ( row.child.isShown() ) {
-                                        tr.removeClass( 'details' );
-                                        row.child.hide();
 
-                                        // Remove from the 'open' array
-                                        detailRows.splice( idx, 1 );
-                                    }
-                                    else {
-                                        tr.addClass( 'details' );
-                                        row.child( format( row.data() ) ).show();
 
-                                        // Add to the 'open' array
-                                        if ( idx === -1 ) {
-                                            detailRows.push( tr.attr('id') );
-                                        }
-                                    }
-                                } );
-
-                                // On each draw, loop over the `detailRows` array and show any child rows
-                                dt.on( 'draw', function () {
-                                    $.each( detailRows, function ( i, id ) {
-                                        $('#'+id+' td.details-control').trigger( 'click' );
-                                    } );
-                                } );
-                            } );
-                        </script>
                         <!-- /.table-responsive -->
                         <div class="well">
                             <h4>DataTables Usage Information</h4>
@@ -567,37 +564,75 @@
 <!-- Custom Theme JavaScript -->
 <script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script type="text/javascript">
+
+
+<script>
+    function format ( d ) {
+        return $("#simpleErrorModal").modal('toggle'); }
+
     $(document).ready(function() {
-        var selected = [];
-        var table = $('#dataTables-example').DataTable( {
-            dom:"Bfrtip",
-            processing: true,
-            responsive: {
-                details: {
-                    display:  $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            var data = row.data();
-                            return 'Details for order: ' + data[0];
-                        }
-                }),
-                    renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-            }},
+        var dt = $('#example').DataTable( {
+            "processing": true,
+            "serverSide": true,
             "ajax": "/api/orders",
             "columns": [
+                {
+                    "class":          "details-control",
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": '<button type="button" class="btn btn-info btn-sm mybtn" data-toggle="modal" data-target="#ModalChangeForm" >+</button>'
+                },
                 { "data": "id" },
                 { "data": "price" },
                 { "data": "totalNumber" },
                 { "data": "clientName" }
+
             ],
+            "order": [[1, 'asc']]
+        } );
 
+        // Array to track the ids of the details displayed rows
+        var detailRows = [];
 
-        });
+        $('#example tbody').on( 'click', 'tr td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = dt.row( tr );
+            var idx = $.inArray( tr.attr('id'), detailRows );
 
-    });
+            if ( row.child.isShown() ) {
+                tr.removeClass( 'details' );
+                row.child.hide();
+
+                // Remove from the 'open' array
+                detailRows.splice( idx, 1 );
+            }
+            else {
+                tr.addClass( 'details' );
+                row.child( format( row.data() ) ).show();
+
+                // Add to the 'open' array
+                if ( idx === -1 ) {
+                    detailRows.push( tr.attr('id') );
+                }
+            }
+        } );
+
+        // On each draw, loop over the `detailRows` array and show any child rows
+        dt.on( 'draw', function () {
+            $.each( detailRows, function ( i, id ) {
+                $('#'+id+' td.details-control').trigger( 'click' );
+            } );
+        } );
+        $('#example tbody').on( 'click', 'button', function () {
+            var data = dt.row( $(this).parents('tr') ).data();
+
+            document.getElementById('orderIdContainer').value = data.id;
+            document.getElementById('total_price').value= data.price;
+            document.getElementById('total_number').value=data.totalNumber;
+            document.getElementById('client_name').value=data.clientName;
+        } );
+    } );
 </script>
-
 
 
 <!-- Bootstrap Core JavaScript -->

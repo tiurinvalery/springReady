@@ -1,12 +1,16 @@
 package com.yopselmopsel.service.web.api;
 
 import com.yopselmopsel.service.model.*;
+import com.yopselmopsel.service.repo.OrderRepository;
 import com.yopselmopsel.service.service.ClientService;
 import com.yopselmopsel.service.service.GoodService;
 import com.yopselmopsel.service.service.OrderService;
 import com.yopselmopsel.service.service.PartOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -37,6 +41,8 @@ public class RestController {
     private GoodService goodService;
     @Autowired
     private PartOrderService partOrderService;
+    @Autowired
+    private OrderRepository orderRepository;
 
 
 
@@ -93,6 +99,30 @@ public class RestController {
         partOrderService.createPartOrder(partOrder);
         }
 
+        @PostMapping(value = "/api/order/")
+        public void updateOrder(@RequestBody Order order){
+        Order exist = orderService.findOrderById(order.getId());
+        copyNonNullProperties(order,exist);
+        orderRepository.save(exist);
+        }
+
+
+    public static void copyNonNullProperties(Object src, Object target) {
+        BeanUtils.copyProperties(src, target, getNullPropertyNames(src));
+    }
+
+    public static String[] getNullPropertyNames (Object source) {
+        final BeanWrapper src = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+
+        Set<String> emptyNames = new HashSet<String>();
+        for(java.beans.PropertyDescriptor pd : pds) {
+            Object srcValue = src.getPropertyValue(pd.getName());
+            if (srcValue == null) emptyNames.add(pd.getName());
+        }
+        String[] result = new String[emptyNames.size()];
+        return emptyNames.toArray(result);
+    }
        @RequestMapping(value = "/api/order/{orderId}/partOrder/{partId}",method = RequestMethod.DELETE)
        public void deletePartOrder(@PathVariable Long orderId,@PathVariable Long partId){
         Order order = orderService.findOrderById(orderId);
