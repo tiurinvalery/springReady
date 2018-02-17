@@ -9,11 +9,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Order details</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+    <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="${ContextPath}/resources/css/savebtn.css" type="text/css">
 
     <!-- jQuery -->
-    <script src="/resources/html_data/vendor/jquery/jquery.min.js"></script>
+    <!--<script src="/resources/html_data/vendor/jquery/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js"></script>
 
+    <link href="/resources/css/myBackButton.css" type="text/css">
     <!-- Bootstrap Core CSS -->
     <link href="/resources/html_data/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,8 +35,6 @@
     <!-- Custom CSS -->
     <link href="/resources/html_data/dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <%--Legacy CSS--%>
-    <link href="/resources/html_data/legacy/css/default.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="/resources/html_data/vendor/morrisjs/morris.css" rel="stylesheet">
@@ -35,17 +45,28 @@
     <!-- DataTables CSS -->
     <link href="/resources/html_data/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/autofill/2.2.2/css/autoFill.dataTables.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.3.2/css/keyTable.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.0.2/css/rowGroup.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/1.4.3/css/scroller.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/autofill/2.2.2/css/autoFill.dataTables.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/keytable/2.3.2/css/keyTable.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/rowgroup/1.0.2/css/rowGroup.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/scroller/1.4.3/css/scroller.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css"/>
 
     <!-- DataTables Responsive CSS -->
     <link href="/resources/html_data/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
@@ -59,9 +80,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <%--Legacy JS--%>
-    <script src="/resources/html_data/legacy/js/default.js"></script>
 
 
 </head>
@@ -148,7 +166,8 @@
                                     <span class="pull-right text-muted">40% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                         <span class="sr-only">40% Complete (success)</span>
                                     </div>
                                 </div>
@@ -164,7 +183,8 @@
                                     <span class="pull-right text-muted">20% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                         <span class="sr-only">20% Complete</span>
                                     </div>
                                 </div>
@@ -180,7 +200,8 @@
                                     <span class="pull-right text-muted">60% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                         <span class="sr-only">60% Complete (warning)</span>
                                     </div>
                                 </div>
@@ -196,7 +217,8 @@
                                     <span class="pull-right text-muted">80% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
@@ -308,7 +330,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/welcome"><i class="fa fa-dashboard fa-fw"></i> Main Page</a>
+                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -353,7 +375,8 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span
+                                class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Second Level Item</a>
@@ -404,7 +427,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Order details</h1>
+                <h1 class="page-header">Tables</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -413,48 +436,117 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Good's in choosen order
+                        DataTables Advanced Tables
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover display" id="goods">
+                        <table id="example" class="table table-striped table-bordered table-hover display nowrap"
+                               cellspacing="0" width="100%">
                             <thead>
                             <tr>
+                                <th></th>
                                 <th>Good's name</th>
                                 <th>Good's in order</th>
                                 <th>Good's price</th>
+                                <th>Id</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
+                                <th></th>
                                 <th>Good's name</th>
                                 <th>Good's in order</th>
                                 <th>Good's price</th>
+                                <th>Id</th>
                             </tr>
                             </tfoot>
                         </table>
-                        <!-- /.table-responsive -->
-                        <div class="well">
-                            <h4>Global Information about this order</h4>
-                            <p>Client name: <b>${clientName}</b>. This client bought products with summary price <b>${totalPrice}</b>.</p><br>
-                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="/panel/client/details/${clientName}">Show detail client information</a>
-                            <p>Put a sale for this order on <input class="text-primary" placeholder="input percent from 1 to 100" type="text">  or <input class="text-primary" placeholder="input grivnas from 1 to ${totalPrice}" type="text"> for client ${clientName} <button class="btn btn-primary-outline" style="color:black;margin-top:5px; background-color: white">Save</button> </p>
-                        </div>
 
+                        <!-- Modal -->
+                        <%--Using:--%>
+                        <%--$("#simpleErrorModal_header").text("Error!");--%>
+                        <%--$("#simpleErrorModal_body").text("Error! Cannot save data!");--%>
+                        <%--$("#simpleErrorModal").modal('toggle');--%>
+                        <div class="modal fade" id="simpleErrorModal" role="dialog">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 id="simpleErrorModal_header" class="modal-title">Modal Header</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p id="simpleErrorModal_body">Part order ID: <input class="info input"
+                                                                                            type="text"
+                                                                                            id="partOrderIdContainer"
+                                                                                            readonly></p>
+                                    </div>
+                                    <div class="content">
+                                        <p>Good name: <input type="text" class="form-control" id="goodName" readonly>
+                                        </p>
+                                        <p>Change this part of price: <input type="number" class="form-control"
+                                                                             id="partPrice"></p>
+                                        <p>Change number of this type product: <input type="number" class="form-control"
+                                                                                      id="numberOfGood"></p>
+                                        <button class="btn-info" id="clientDetails">Open client details</button>
+                                    </div>
+                                    <div class="footer">
+                                        <button type="button" class="btn btn-outline btn-info" id="ChangeDTSaveBtn">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.panel-body -->
-             </div>
-                <!-- /.panel -->
+
+
+                    <script>
+                        $('#ChangeDTSaveBtn').click(function () {
+                            var partOrderId = document.getElementById('partOrderIdContainer').value;
+                            var partPrice = document.getElementById('partPrice').value;
+                            var numberOfGood = document.getElementById('numberOfGood').value;
+                            var goodName = document.getElementById('goodName').value;
+                            var partOrderDTO = {
+                                "partPrice": partPrice,
+                                "numberOfGood": numberOfGood,
+                                "goodName": goodName
+                            };
+                            console.log(partOrderDTO);
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/order/" + "${orderId}" + "/partOrder/" + partOrderId,
+                                data: JSON.stringify(partOrderDTO),
+                                contentType: 'application/json',
+                                success: alert("OK")
+                            })
+                        })
+                    </script>
+
+
+                    <!-- /.table-responsive -->
+                    <div class="well">
+                        <h4>DataTables Usage Information</h4>
+                        <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a
+                            specialized version of DataTables built for Bootstrap 3. We have also customized the table
+                            headings to use Font Awesome icons in place of images. For complete documentation on
+                            DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.
+                        </p>
+                        <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View
+                            DataTables Documentation</a>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /.panel -->
         </div>
-        <!-- /.row -->
-        <!-- /.panel -->
+        <!-- /.col-lg-12 -->
     </div>
+    <!-- /.row -->
+    <!-- /.panel -->
 </div>
 
-<!-- /#page-wrapper -->
 
+<!-- /#page-wrapper -->
 <div class="panel-footer">
     <div class="text-center">
         <a class="btn btn-social-icon btn-bitbucket"><i class="fa fa-bitbucket"></i></a>
@@ -471,6 +563,7 @@
         <a class="btn btn-social-icon btn-vk"><i class="fa fa-vk"></i></a>
     </div>
 </div>
+
 
 <!-- jQuery -->
 <script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
@@ -495,60 +588,73 @@
 <!-- Custom Theme JavaScript -->
 <script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script type="text/javascript">
-    $(document).ready(function(){
-        var selected = [];
-        var url = "/api/good/"+"${orderId}"+"/products/";
-        var table = $('#goods').DataTable({
-            dom:"Bfrtip",
-            processing: true,
-            select: true,
-            ajax: url,
-            columns: [
-                {"data":"name"},
-                {"data":"number"},
-                {"data":"price"}
-            ],
-            responsive:true,
-            buttons: [
+
+<script>
+    function format(d) {
+        return $("#simpleErrorModal").modal('toggle');
+    }
+
+    $(document).ready(function () {
+        var url = "/api/good/" + "${orderId}" + "/products/";
+        var dt = $('#example').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": url,
+            "columns": [
                 {
-                    extend: 'selectedSingle',
-                    text: "Open good's details",
-                    action: function(e,dt,button,config){
-                        var selectedRows = table.rows('.selected').data().toArray();
-                        selectedRows.forEach(showDetailPage);
+                    "class": "details-control",
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button type="button" class="btn btn-info btn-sm mybtn" data-toggle="modal" data-target="#ModalChangeForm" >+</button>'
+                },
+                {"data": "name"},
+                {"data": "number"},
+                {"data": "price"},
+                {"data": "partOrderId"}
 
-                        function showDetailPage(row, index) {
-                            var url = "/panel/good/details/" + row.name + "/";
-                            $("<a>").attr("href", url).attr("target", "_blank")[0].click();
-                        }
-                    }
-
-
-                }
             ],
-            "rowCallback": function( row, data ) {
-                if ( $.inArray(data.DT_RowId, selected) !== -1 ) {
-                    $(row).addClass('selected');
-                }
-            },
-
+            "order": [[1, 'asc']]
         });
-        $('#goods tbody').on('click', 'tr', function () {
-            var id = this.id;
-            var index = $.inArray(id, selected);
 
-            if ( index === -1 ) {
-                selected.push( id );
-            } else {
-                selected.splice( index, 1 );
+        // Array to track the ids of the details displayed rows
+        var detailRows = [];
+
+        $('#example tbody').on('click', 'tr td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = dt.row(tr);
+            var idx = $.inArray(tr.attr('id'), detailRows);
+
+            if (row.child.isShown()) {
+                tr.removeClass('details');
+                row.child.hide();
+
+                // Remove from the 'open' array
+                detailRows.splice(idx, 1);
             }
+            else {
+                tr.addClass('details');
+                row.child(format(row.data())).show();
 
-            $(this).toggleClass('selected');
-        } );
+                // Add to the 'open' array
+                if (idx === -1) {
+                    detailRows.push(tr.attr('id'));
+                }
+            }
+        });
 
-
+        // On each draw, loop over the `detailRows` array and show any child rows
+        dt.on('draw', function () {
+            $.each(detailRows, function (i, id) {
+                $('#' + id + ' td.details-control').trigger('click');
+            });
+        });
+        $('#example tbody').on('click', 'button', function () {
+            var data = dt.row($(this).parents('tr')).data();
+            document.getElementById('partOrderIdContainer').value = data.partOrderId;
+            document.getElementById('goodName').value = data.name;
+            document.getElementById('partPrice').value = data.price;
+            document.getElementById('numberOfGood').value = data.number;
+        });
     });
 </script>
 
@@ -571,12 +677,12 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="/resources/html_data/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="/resources/html_data/vendor/datatables-responsive/dataTables.responsive.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
 
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js" ></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js" ></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js" ></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
@@ -586,13 +692,18 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.3.2/js/dataTables.keyTable.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
 

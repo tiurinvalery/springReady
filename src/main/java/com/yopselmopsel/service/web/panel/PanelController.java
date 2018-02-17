@@ -77,7 +77,7 @@ public class PanelController {
         model.addAttribute("clientName",orderService.findOrderById(id).getClient().getName());
         model.addAttribute("orderId",id);
         model.addAttribute("totalPrice",orderService.findOrderById(id).getPrice());
-        return "newordercards1";
+        return "newordercards";
     }
     @RequestMapping(value = "/panel/good/details/{name}",method = RequestMethod.GET)
     public String goodsDetailsPage(@PathVariable String name, Model model) {

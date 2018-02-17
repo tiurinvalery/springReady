@@ -45,17 +45,28 @@
     <!-- DataTables CSS -->
     <link href="/resources/html_data/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/autofill/2.2.2/css/autoFill.dataTables.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.3.2/css/keyTable.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.0.2/css/rowGroup.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/1.4.3/css/scroller.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/autofill/2.2.2/css/autoFill.dataTables.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/keytable/2.3.2/css/keyTable.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/rowgroup/1.0.2/css/rowGroup.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/scroller/1.4.3/css/scroller.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css"/>
 
     <!-- DataTables Responsive CSS -->
     <link href="/resources/html_data/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
@@ -155,7 +166,8 @@
                                     <span class="pull-right text-muted">40% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                         <span class="sr-only">40% Complete (success)</span>
                                     </div>
                                 </div>
@@ -171,7 +183,8 @@
                                     <span class="pull-right text-muted">20% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                         <span class="sr-only">20% Complete</span>
                                     </div>
                                 </div>
@@ -187,7 +200,8 @@
                                     <span class="pull-right text-muted">60% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                         <span class="sr-only">60% Complete (warning)</span>
                                     </div>
                                 </div>
@@ -203,7 +217,8 @@
                                     <span class="pull-right text-muted">80% Complete</span>
                                 </p>
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
@@ -360,7 +375,8 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span
+                                class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Second Level Item</a>
@@ -424,7 +440,8 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table id="example" class="table table-striped table-bordered table-hover display nowrap" cellspacing="0" width="100%">
+                        <table id="example" class="table table-striped table-bordered table-hover display nowrap"
+                               cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th></th>
@@ -458,17 +475,25 @@
                                         <h4 id="simpleErrorModal_header" class="modal-title">Modal Header</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <p id="simpleErrorModal_body" >Order details for: <input class="info input" type="text" id="orderIdContainer" readonly> </p>
+                                        <p id="simpleErrorModal_body">Order details for: <input class="info input"
+                                                                                                type="text"
+                                                                                                id="orderIdContainer"
+                                                                                                readonly></p>
                                     </div>
                                     <div class="content">
-                                        <p>Change total price: <input  type="number" class="form-control" id="total_price"></p>
-                                        <p>Change total number: <input type="number" class="form-control" id="total_number"></p>
-                                        <p>Change client name: <input type="text" class="form-control" id="client_name"></p>
+                                        <p>Change total price: <input type="number" class="form-control"
+                                                                      id="total_price"></p>
+                                        <p>Change total number: <input type="number" class="form-control"
+                                                                       id="total_number"></p>
+                                        <p>Change client name: <input type="text" class="form-control" id="client_name">
+                                        </p>
                                         <button class="btn-info" id="orderDetails">Open order details</button>
                                         <button class="btn-info" id="clientDetails">Open client details</button>
                                     </div>
                                     <div class="footer">
-                                        <button type="button" class="btn btn-outline btn-info" id="ChangeDTSaveBtn">Save</button>
+                                        <button type="button" class="btn btn-outline btn-info" id="ChangeDTSaveBtn">
+                                            Save
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -476,50 +501,54 @@
                     </div>
 
                     <script>
-                        $('#orderDetails').click(function(){
-                            var orderId= document.getElementById('orderIdContainer').value;
+                        $('#orderDetails').click(function () {
+                            var orderId = document.getElementById('orderIdContainer').value;
                             var url = "/panel/order/details/" + orderId + "/";
                             $("<a>").attr("href", url).attr("target", "_blank")[0].click();
                         })
                     </script>
 
                     <script>
-                        $('#ChangeDTSaveBtn').click(function(){
+                        $('#ChangeDTSaveBtn').click(function () {
                             var totalPrice = document.getElementById('total_price').value;
-                            var orderId= document.getElementById('orderIdContainer').value;
+                            console.log(totalPrice);
+                            var orderId = document.getElementById('orderIdContainer').value;
                             var clientName = document.getElementById('client_name').value;
-                            $.ajax ({
+                            $.ajax({
                                 type: "POST",
-                                contentType:'application/json',
-                                url: "/api/order/",
-                                data:[
-                                    {data:orderId},
-                                    {data:clientName},
-                                    {data:totalPrice}
-                                ]
+                                contentType: 'application/json',
+                                url: "/api/order/" + orderId,
+                                data: [
+                                    {data: clientName},
+                                    {data: totalPrice}
+                                ],
+                                success: alert(data)
                             })
                         })
                     </script>
 
 
-
-
-                        <!-- /.table-responsive -->
-                        <div class="well">
-                            <h4>DataTables Usage Information</h4>
-                            <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
-                            <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
-                        </div>
+                    <!-- /.table-responsive -->
+                    <div class="well">
+                        <h4>DataTables Usage Information</h4>
+                        <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a
+                            specialized version of DataTables built for Bootstrap 3. We have also customized the table
+                            headings to use Font Awesome icons in place of images. For complete documentation on
+                            DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.
+                        </p>
+                        <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View
+                            DataTables Documentation</a>
                     </div>
-                    <!-- /.panel-body -->
                 </div>
-                <!-- /.panel -->
+                <!-- /.panel-body -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /.panel -->
         </div>
-        <!-- /.row -->
-        <!-- /.panel -->
+        <!-- /.col-lg-12 -->
     </div>
+    <!-- /.row -->
+    <!-- /.panel -->
+</div>
 </div>
 
 <!-- /#page-wrapper -->
@@ -565,73 +594,73 @@
 <script src="/resources/html_data/startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js"></script>
 
 
-
 <script>
-    function format ( d ) {
-        return $("#simpleErrorModal").modal('toggle'); }
+    function format(d) {
+        return $("#simpleErrorModal").modal('toggle');
+    }
 
-    $(document).ready(function() {
-        var dt = $('#example').DataTable( {
+    $(document).ready(function () {
+        var dt = $('#example').DataTable({
             "processing": true,
             "serverSide": true,
             "ajax": "/api/orders",
             "columns": [
                 {
-                    "class":          "details-control",
-                    "orderable":      false,
-                    "data":           null,
+                    "class": "details-control",
+                    "orderable": false,
+                    "data": null,
                     "defaultContent": '<button type="button" class="btn btn-info btn-sm mybtn" data-toggle="modal" data-target="#ModalChangeForm" >+</button>'
                 },
-                { "data": "id" },
-                { "data": "price" },
-                { "data": "totalNumber" },
-                { "data": "clientName" }
+                {"data": "id"},
+                {"data": "price"},
+                {"data": "totalNumber"},
+                {"data": "clientName"}
 
             ],
             "order": [[1, 'asc']]
-        } );
+        });
 
         // Array to track the ids of the details displayed rows
         var detailRows = [];
 
-        $('#example tbody').on( 'click', 'tr td.details-control', function () {
+        $('#example tbody').on('click', 'tr td.details-control', function () {
             var tr = $(this).closest('tr');
-            var row = dt.row( tr );
-            var idx = $.inArray( tr.attr('id'), detailRows );
+            var row = dt.row(tr);
+            var idx = $.inArray(tr.attr('id'), detailRows);
 
-            if ( row.child.isShown() ) {
-                tr.removeClass( 'details' );
+            if (row.child.isShown()) {
+                tr.removeClass('details');
                 row.child.hide();
 
                 // Remove from the 'open' array
-                detailRows.splice( idx, 1 );
+                detailRows.splice(idx, 1);
             }
             else {
-                tr.addClass( 'details' );
-                row.child( format( row.data() ) ).show();
+                tr.addClass('details');
+                row.child(format(row.data())).show();
 
                 // Add to the 'open' array
-                if ( idx === -1 ) {
-                    detailRows.push( tr.attr('id') );
+                if (idx === -1) {
+                    detailRows.push(tr.attr('id'));
                 }
             }
-        } );
+        });
 
         // On each draw, loop over the `detailRows` array and show any child rows
-        dt.on( 'draw', function () {
-            $.each( detailRows, function ( i, id ) {
-                $('#'+id+' td.details-control').trigger( 'click' );
-            } );
-        } );
-        $('#example tbody').on( 'click', 'button', function () {
-            var data = dt.row( $(this).parents('tr') ).data();
+        dt.on('draw', function () {
+            $.each(detailRows, function (i, id) {
+                $('#' + id + ' td.details-control').trigger('click');
+            });
+        });
+        $('#example tbody').on('click', 'button', function () {
+            var data = dt.row($(this).parents('tr')).data();
 
             document.getElementById('orderIdContainer').value = data.id;
-            document.getElementById('total_price').value= data.price;
-            document.getElementById('total_number').value=data.totalNumber;
-            document.getElementById('client_name').value=data.clientName;
-        } );
-    } );
+            document.getElementById('total_price').value = data.price;
+            document.getElementById('total_number').value = data.totalNumber;
+            document.getElementById('client_name').value = data.clientName;
+        });
+    });
 </script>
 
 
@@ -653,12 +682,12 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="/resources/html_data/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="/resources/html_data/vendor/datatables-responsive/dataTables.responsive.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
 
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js" ></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js" ></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js" ></script>
-<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
@@ -668,13 +697,18 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.3.2/js/dataTables.keyTable.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
 

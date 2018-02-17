@@ -1,5 +1,6 @@
 package com.yopselmopsel.service.web.api;
 
+import com.yopselmopsel.service.dto.PartOrderDTO;
 import com.yopselmopsel.service.model.*;
 import com.yopselmopsel.service.repo.OrderRepository;
 import com.yopselmopsel.service.service.ClientService;
@@ -28,7 +29,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
@@ -45,10 +45,9 @@ public class RestController {
     private OrderRepository orderRepository;
 
 
-
     @RequestMapping(value = "/api/create", method = RequestMethod.POST)
     public List<Client> createClient(@RequestBody Client client) {
-        clientService.createClient(new Client(client.getName(),client.getOrderSet()));
+        clientService.createClient(new Client(client.getName(), client.getOrderSet()));
 
         return clientService.findAllClient();
     }
@@ -60,7 +59,7 @@ public class RestController {
         return clientService.findAllClient();
     }
 
-                        // ##### Good's Controllers ###### //
+    // ##### Good's Controllers ###### //
 
     @RequestMapping(value = "/api/good", method = RequestMethod.GET)
     public Good sendGoodToPage() {
@@ -78,53 +77,55 @@ public class RestController {
     }
 
     @GetMapping(value = "/api/good/{id}/products/")
-    public GoodsResponse getAllGoodsInOrder(@PathVariable Long id) {return new GoodsResponse(goodService.findAllGoodsInOrder(id),id);}
+    public GoodsResponse getAllGoodsInOrder(@PathVariable Long id) {
+        return new GoodsResponse(goodService.findAllGoodsInOrder(id), id);
+    }
 
     @PostMapping(value = "/api/good/{id}/products/")
-    public void addNewPartOrder(@PathVariable Long id, String newGoodsName, int newGoodsNumber){
+    public void addNewPartOrder(@PathVariable Long id, String newGoodsName, int newGoodsNumber) {
         Good good = goodService.findGoodByName(newGoodsName);
         Order order = orderService.findOrderById(id);
-        if(good.getNumber()<newGoodsNumber){
+        if (good.getNumber() < newGoodsNumber) {
             newGoodsNumber = good.getNumber();
         }
         PartOrder partOrder = new PartOrder();
         partOrder.setNumber(newGoodsNumber);
         partOrder.setOrder(order);
         partOrder.setGood(good);
-        partOrder.setTotalPrice(good.getPrice()*partOrder.getNumber());
+        partOrder.setTotalPrice(good.getPrice() * partOrder.getNumber());
         Set<PartOrder> partOrders = order.getOrders();
         partOrders.add(partOrder);
         order.setOrders(partOrders);
         orderService.updateOrder(order);
         partOrderService.createPartOrder(partOrder);
-        }
+    }
 
-        @PostMapping(value = "/api/order/")
-        public void updateOrder(@RequestBody Order order){
-        Order exist = orderService.findOrderById(order.getId());
-        copyNonNullProperties(order,exist);
-        orderRepository.save(exist);
-        }
-
+    @PostMapping(value = "/api/order/{id}")
+    public void updateOrderTotalPrice(@PathVariable Long id, @RequestParam String clientName, @RequestParam Long totalPrice) {
+        Order order = orderService.findOrderById(id);
+        order.setPrice(totalPrice);
+        orderService.updateOrder(order);
+    }
 
     public static void copyNonNullProperties(Object src, Object target) {
         BeanUtils.copyProperties(src, target, getNullPropertyNames(src));
     }
 
-    public static String[] getNullPropertyNames (Object source) {
+    public static String[] getNullPropertyNames(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
 
         Set<String> emptyNames = new HashSet<String>();
-        for(java.beans.PropertyDescriptor pd : pds) {
+        for (java.beans.PropertyDescriptor pd : pds) {
             Object srcValue = src.getPropertyValue(pd.getName());
             if (srcValue == null) emptyNames.add(pd.getName());
         }
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
     }
-       @RequestMapping(value = "/api/order/{orderId}/partOrder/{partId}",method = RequestMethod.DELETE)
-       public void deletePartOrder(@PathVariable Long orderId,@PathVariable Long partId){
+
+    @RequestMapping(value = "/api/order/{orderId}/partOrder/{partId}", method = RequestMethod.DELETE)
+    public void deletePartOrder(@PathVariable Long orderId, @PathVariable Long partId) {
         Order order = orderService.findOrderById(orderId);
         logger.info("Find order");
         PartOrder partOrder = partOrderService.findPartOrderById(partId);
@@ -136,8 +137,20 @@ public class RestController {
         partOrderService.deletePartOrder(partOrder);
         logger.info("Delete part order");
         logger.info("OK");
-       }
+    }
 
+
+
+    @RequestMapping(value = "/api/order/{orderId}/partOrder/{partId}", method = RequestMethod.POST)
+    public void updatePartOrder(@PathVariable Long orderId, @PathVariable Long partId, @RequestBody PartOrderDTO dto) {
+      Order order = orderService.findOrderById(orderId);
+      PartOrder partOrder = partOrderService.findPartOrderById(partId);
+      partOrder.setNumber(dto.getNumberOfGood());
+      partOrder.setOrder(order);
+      partOrder.setTotalPrice(dto.getPartPrice());
+      partOrder.setGood(goodService.findGoodByName(dto.getGoodName()));
+      partOrderService.updatePartOrder(partOrder);
+    }
 
 
     @RequestMapping(value = "/api/createorders", method = RequestMethod.GET)
@@ -166,13 +179,13 @@ public class RestController {
         partOrder1.setGood(good1);
         partOrder1.setNumber(2);
         partOrder1.setOrder(order);
-        partOrder1.setTotalPrice(partOrder1.getGood().getPrice()*partOrder1.getNumber());
+        partOrder1.setTotalPrice(partOrder1.getGood().getPrice() * partOrder1.getNumber());
 
         PartOrder partOrder2 = new PartOrder();
         partOrder2.setGood(good2);
         partOrder2.setNumber(6);
         partOrder2.setOrder(order);
-        partOrder2.setTotalPrice(partOrder2.getGood().getPrice()*partOrder2.getNumber());
+        partOrder2.setTotalPrice(partOrder2.getGood().getPrice() * partOrder2.getNumber());
 
         Set<PartOrder> partOrders = new HashSet<>();
         partOrders.add(partOrder1);
@@ -214,13 +227,13 @@ public class RestController {
         secondPartOrder1.setGood(secondGood1);
         secondPartOrder1.setNumber(3);
         secondPartOrder1.setOrder(secondOrder);
-        secondPartOrder1.setTotalPrice(secondPartOrder1.getGood().getPrice()*secondPartOrder1.getNumber());
+        secondPartOrder1.setTotalPrice(secondPartOrder1.getGood().getPrice() * secondPartOrder1.getNumber());
 
         PartOrder secondPartOrder2 = new PartOrder();
         secondPartOrder2.setGood(secondGood2);
         secondPartOrder2.setNumber(7);
         secondPartOrder2.setOrder(secondOrder);
-        secondPartOrder2.setTotalPrice(secondPartOrder2.getGood().getPrice()*secondPartOrder2.getNumber());
+        secondPartOrder2.setTotalPrice(secondPartOrder2.getGood().getPrice() * secondPartOrder2.getNumber());
 
         Set<PartOrder> secondPartOrders = new HashSet<>();
         secondPartOrders.add(secondPartOrder1);
@@ -241,15 +254,17 @@ public class RestController {
     @RequestMapping(value = "/api/order/details/{id}", method = RequestMethod.PUT)
     public void updateOrder(@PathVariable Long id, String newClientName, Long newTotalPrice) {
         Order order = orderService.findOrderById(id);
-        if(newTotalPrice != null){
+        if (newTotalPrice != null) {
             order.setPrice(newTotalPrice);
-        orderService.updateOrder(order); }
-        if(newClientName != null) {
-        Client client = clientService.findClientByName(order.getClient().getName());
-        client.setName(newClientName);
-        clientService.updateClient(client);
-       }
+            orderService.updateOrder(order);
+        }
+        if (newClientName != null) {
+            Client client = clientService.findClientByName(order.getClient().getName());
+            client.setName(newClientName);
+            clientService.updateClient(client);
+        }
     }
+
     class Response {
         class ResponsePart {
             Long id;
@@ -271,9 +286,10 @@ public class RestController {
         public Response(List<Order> orderList) {
             this.data = new ArrayList<>();
             orderList.forEach(order -> data.add(
-                    new ResponsePart(order.getId(),orderService.getResultPrice(orderService.findOrderById(order.getId()).getOrders()), orderService.getTotalNumberOfGoods(orderService.findOrderById(order.getId()).getOrders()),order.getClient().getName())));
+                    new ResponsePart(order.getId(), orderService.getResultPrice(orderService.findOrderById(order.getId()).getOrders()), orderService.getTotalNumberOfGoods(orderService.findOrderById(order.getId()).getOrders()), order.getClient().getName())));
         }
     }
+
     class GoodsResponse {
         class ResponsePart {
             Long DT_RowId;
@@ -283,29 +299,28 @@ public class RestController {
             Long partOrderId;
 
 
-
-            ResponsePart(Long id,String name,int number,Long price, Long partOrderId) {
-                this.DT_RowId =id;
+            ResponsePart(Long id, String name, int number, Long price, Long partOrderId) {
+                this.DT_RowId = id;
                 this.name = name;
                 this.number = number;
                 this.price = price;
                 this.partOrderId = partOrderId;
-                }
-
+            }
 
 
         }
+
         List<ResponsePart> data;
+
         public GoodsResponse(List<Good> goodList, Long orderId) {
             this.data = new ArrayList<>();
             Long counter = 1L;
-            for(Good good: goodList) {
-                data.add(new ResponsePart(counter,good.getName(),good.getNumber(),good.getPrice(),partOrderService.findPartOrderByNumberAndGoodAndOrder(good.getNumber(),good,orderService.findOrderById(orderId)).getId()));
-                counter=counter+1L;
+            for (Good good : goodList) {
+                data.add(new ResponsePart(counter, good.getName(), good.getNumber(), good.getPrice(), partOrderService.findPartOrderByNumberAndGoodAndOrder(good.getNumber(), good, orderService.findOrderById(orderId)).getId()));
+                counter = counter + 1L;
             }
 
         }
-
 
 
     }
